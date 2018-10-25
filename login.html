@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Tizen Mobile Web Basic Template" />
+
+<title>Tizen Mobile Web Basic Application</title>
+
+<!--CSS import-->
+<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<!--Javascript import-->
+<script src="js/main.js"></script>
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="agile-login">
+		<div class="wrapper">
+			<img alt="" src="images/logowifi.jpg" style="width:5cm;height:5cm">
+			 <br>
+			  <img alt="" src="images/logotext.jpg" style="width:7cm;height:2cm">
+			<div class="w3ls-form">
+				<form action="/" method="post">
+					<div class="form-group">
+						<label>Username</label> 
+						<input type="text" class="form-control" id="usernameId" aria-describedby="emailHelp" placeholder="Enter username"> 
+						<small id="usernameHelp" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label> <input
+							type="password" class="form-control" id="passwordId"
+							placeholder="Password">
+						<small id="passwordHelp" style="color:red;" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						<!--<a href="#" class="pass">Forgot Password ?</a>-->
+						<a href="registration.html" class="pass">Sign up</a>
+					</div>
+					<input type="button" value="Login" onclick="login()" />
+				</form>
+			</div>
+
+		</div>
+	</div>
+	</div>
+</body>
+
+<script>
+function login() {
+	var pw= document.getElementById('passwordId').value;
+	var urn = document.getElementById('usernameId').value;
+	
+	var url;
+
+	url = 'http://localhost/android/login.php?username='+urn+'&password='+pw;
+
+	console.log('URL : ' + url);
+	$.getJSON(url, function(data) {
+	console.log(data);
+		if (data == 0){
+			document.getElementById('passwordHelp').style.display = 'none';
+			document.getElementById('usernameHelp').style.display = '';
+			document.getElementById('usernameHelp').style.color = 'red';
+			document.getElementById('usernameHelp').innerHTML = "Wrong Username";
+		} else if (data == 2) {
+			document.getElementById('usernameHelp').style.display = 'none';
+			document.getElementById('passwordHelp').style.display = '';
+			document.getElementById('usernameHelp').style.color = 'red';
+			document.getElementById('passwordHelp').innerHTML = "Wrong Password";
+		} else {
+			sessionStorage.setItem('currentUser', JSON.stringify(data));
+			window.location.assign("map.html");
+		}
+			
+	});
+}
+	
+</script>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<!--CSS import-->
+	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/b4_sidebar.css" />
+	<link rel="stylesheet" type="text/css" href="css/map.css" />
+	<link rel="stylesheet" type="text/css" href="libs/fontawesome/css/all.css" />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark sidebarNavigation" data-sidebarClass="navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Detail</a>
+        <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	        <div class="text-center addjob-container">
+	   		 <div class="circle-img-background-company">
+	   		 	<img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto; border: 5px solid #ff3366;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
+	   		 </div>
+	   		 <br>
+	    		<h3 style="color:#FFF">Foulen ben Foulen </h3>
+	    	</div>
+	    	 <br>
+	    	  
+	    	<ul class="navbar-nav mr-auto">
+                <li class="nav-item active" >
+                    <a class="nav-link" href="map.html" style="font-size:24px">
+                   		 <i class="fas fa-map-marked-alt fa-sm"></i> Home   
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="font-size:24px"><i class="fas fa-heart fa-sm"></i> Favoris</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            
+        </div>
+    </nav>
+
+    <!--  -->
+	
+	<div class="wifi-container">
+ 		 <div class="circle-img-background-company text-center">
+ 		 	<img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
+ 		 </div>
+  		 <br>
+  		 
+  		 <div class='wifi' style="margin-left: auto; margin-right: auto;width: 40%">
+  		 <span class='wifname' style=" color: white;">
+  		 	<i class="fas fa-wifi"></i>  <span id="ssid"></span>
+  		 </span>
+  		 <br>
+   		 <span class='wifpassword' style=" color: white;">
+  		 	<i class="fas fa-unlock-alt"></i>      <span id="pass"></span> 
+  		 </span>
+  		 <br>
+  		 </div>
+		
+   	</div>
+   	
+	<div id ="map">
+	
+	</div>
+	 <div style="text-align:center">
+		<button id="myBtn">Favourite</button><button id="direction">Direction</button>
+	</div>
+</body>
+
+<!--Javascript import-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/fontawesome/js/all.js"></script>
+<script src="js/b4_sidebar.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+<script src="js/detail.js"></script>
+
+
+
+</html>
