@@ -14,6 +14,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     trackUserLocation: true
 }));
 
+var locations;
 function loadDatatable() {
 	
 	var url;
@@ -23,6 +24,7 @@ function loadDatatable() {
 	console.log('URL : ' + url);
 	$.getJSON(url, function(jsonData) {
 		console.log(jsonData);
+		locations = jsonData;
 		for(var k in jsonData){
 			var el = document.createElement('div');
 			el.className = 'marker';
@@ -102,4 +104,42 @@ function showdetail(id) {
 	console.log(id);
 	sessionStorage.setItem('idloc', id);
 	window.location.assign("detail.html");
+}
+
+function Search () {
+	var input = document.getElementById("myInput");
+	var filter = input.value.toUpperCase();
+	
+	for(var k in locations){
+		
+		
+		if (locations[k]['desc_loc'].toUpperCase().indexOf(filter) > -1)
+			{
+				map.flyTo({
+			        // These options control the ending camera position: centered at
+			        // the target, at zoom level 9, and north up.
+			        center: [locations[k]['lng'], locations[k]['lat']],
+			        zoom: 15,
+			        bearing: 0,
+	
+			        // These options control the flight curve, making it move
+			        // slowly and zoom out almost completely before starting
+			        // to pan.
+			        speed: 2, // make the flying slow
+			        curve: 1, // change the speed at which it zooms out
+	
+			        // This can be any easing function: it takes a number between
+			        // 0 and 1 and returns another number between 0 and 1.
+			        easing: function (t) {
+			            return t;
+			        }
+			    });
+			}
+		
+		
+		
+		  
+	}
+	
+	
 }
