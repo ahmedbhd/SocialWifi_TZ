@@ -74,7 +74,11 @@ function login() {
 			document.getElementById('usernameHelp').style.color = 'red';
 			document.getElementById('passwordHelp').innerHTML = "Wrong Password";
 		} else {
-			sessionStorage.setItem('currentUser', JSON.stringify(data));
+			//sessionStorage.setItem('currentUser', JSON.stringify(data));
+						sessionStorage.setItem('iduser', data[0]['id']);
+						sessionStorage.setItem('username', data[0]['username']);
+						sessionStorage.setItem('email', data[0]['email']);
+			
 			window.location.assign("map.html");
 		}
 			

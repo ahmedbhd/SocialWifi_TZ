@@ -11,6 +11,15 @@
 	<link rel="stylesheet" type="text/css" href="css/map.css" />
 	<link rel="stylesheet" type="text/css" href="libs/fontawesome/css/all.css" />
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css"/>
+    
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--suppress JSUnresolvedLibraryURL -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+	<link href="./css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+	<script src="./js/star-rating.js" type="text/javascript"></script>
+		
 </head>
 
 
@@ -59,35 +68,40 @@
   		 <br>
   		 
   		 <div class='wifi' style="margin-left: auto; margin-right: auto;width: 40%">
-  		 <span class='wifname' style=" color: white;">
+  		 <span class='wifname' style=" color: black;">
   		 	<i class="fas fa-wifi"></i>  <span id="ssid"></span>
   		 </span>
   		 <br>
-   		 <span class='wifpassword' style=" color: white;">
+   		 <span class='wifpassword' style=" color: black;">
   		 	<i class="fas fa-unlock-alt"></i>      <span id="pass"></span> 
   		 </span>
   		 <br>
   		 </div>
-		
+  		 
+	
    	</div>
-   	
+<input id="rating" name="input-name" type="number" class="rating" min=0 max=5 step=0.5 data-size="sm">
+		  
 	<div id ="map">
 	
 	</div>
 	 <div style="text-align:center">
 		<button id="myBtn">Favourite</button><button id="direction">Direction</button>
 	</div>
+	
+	<script>
+        
+    </script>
 </body>
 
 <!--Javascript import-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/fontawesome/js/all.js"></script>
 <script src="js/b4_sidebar.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
 <script src="js/detail.js"></script>
-
+	
 
 
 </html>

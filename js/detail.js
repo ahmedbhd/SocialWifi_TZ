@@ -113,3 +113,39 @@ function getRoute(end) {
 		}
 	  
 	}
+
+function ratingfunc() {
+	//ToDo : WebService
+	var url;
+
+	$.get('http://localhost/android/services.php?action=selectratings&loc='+sessionStorage.getItem('idloc'), function(string) {
+		console.log(string);
+		$('#rating').rating('update', string);
+		
+		
+	});
+	$('#rating').on('rating:change', function(event, value, caption) {
+		var t = true;
+
+		if (t){
+		    console.log(value);
+		    //ToDo : WebService
+		    var user = sessionStorage.getItem('iduser');
+		      $.get('http://localhost/android/services.php?action=addrate&rate='+value+'&loc='+sessionStorage.getItem('idloc')+'&user='+user, function(string) {
+				console.log(string);
+				var url;
+
+				$.get('http://localhost/android/services.php?action=selectratings&loc='+sessionStorage.getItem('idloc'), function(val) {
+					console.log(val);
+					$('#rating').rating('update', val);
+					
+					
+				});
+				
+			});
+		    t = false;
+		}
+	});
+}
+ratingfunc();
+
