@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/SocialWifi" version="1.0.0" viewmodes="maximized">
-    <access origin="http://192.168.1.67" subdomains="true"/>
+    <access origin="http://192.168.1.206" subdomains="true"/>
     <tizen:application id="8MwP5mqoYg.SocialWifi" package="8MwP5mqoYg" required_version="2.4"/>
     <content src="login.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>

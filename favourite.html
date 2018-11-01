@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Swipe actions</title>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.javascript.min.css">
+    <script src="js/mobiscroll.javascript.min.js"></script>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/b4_sidebar.css" />
+	<link rel="stylesheet" type="text/css" href="css/map.css" />
+	<link rel="stylesheet" type="text/css" href="libs/fontawesome/css/all.css" />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css"/>
+    
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--suppress JSUnresolvedLibraryURL -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+    <style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<div mbsc-page class="demo-swipe-actions">
+    <div mbsc-form>
+        <div class="mbsc-form-group">
+            <div class="mbsc-form-group-title">Action list 3</div>
+            <ul id="action-list" class="mbsc-cloak">
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+
+    mobiscroll.settings = {
+        lang: 'ar',      // Specify language like: lang: 'pl' or omit setting to use default
+        theme: 'ios'     // Specify theme like: theme: 'ios' or omit setting to use default
+    };
+    
+    mobiscroll.listview('#action-list', {
+        theme: 'ios',    // Specify theme like: theme: 'ios' or omit setting to use default
+        lang: 'ar',      // Specify language like: lang: 'pl' or omit setting to use default
+        enhance: true,   // More info about enhance: https://docs.mobiscroll.com/4-4-1/javascript/listview#opt-enhance
+        stages: [{       // More info about stages: https://docs.mobiscroll.com/4-4-1/javascript/listview#opt-stages
+                percent: 25,
+                icon: 'link',
+                text: 'Update',
+                action: function (event, inst) {
+                    mobiscroll.toast({
+                        message: 'Link copied'
+                    });
+                }
+            }, {
+                percent: -25,
+                icon: 'remove',
+                text: 'Delete',
+                confirm: true,
+                action: function (event, inst) {
+                console.log(event.target.id);
+                	remove(event.target.id);
+                    inst.remove(event.target);
+                    return false;
+                }
+            }
+        ]
+    });
+    
+    function remove (id) {
+		$.get('http://localhost/android/services.php?action=delfavourite&id_loc='+id+'&id_user='+1, function(string) {
+			console.log(string);		
+			
+		});
+	}
+    
+</script>
+<script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/favourite.js"></script>
+
+</body>
+</html>
