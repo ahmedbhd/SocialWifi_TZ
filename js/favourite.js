@@ -1,7 +1,7 @@
 function loadDate(){
 	var url;
 
-	url = 'http://localhost/android/services.php?action=selectfav&id_user='+1;
+	url = 'http://localhost/android/services.php?action=selectfav&id_user='+sessionStorage.getItem('iduser');
 
 	console.log('URL : ' + url);
 	$.getJSON(url, function(jsonData) {
@@ -15,7 +15,7 @@ function loadDate(){
 			  li.setAttribute("id", jsonData[k]['id_loc']);
 
 			  li.appendChild(document.createTextNode(jsonData[k]['desc_loc']));
-			  li.setAttribute( "onclick", "javascript:showdetail('"+jsonData[k]['id']+"');" );
+			  li.setAttribute( "onclick", "javascript:showdetail('"+jsonData[k]['id_loc']+"');" );
 			  ul.appendChild(li);
 		}
 		

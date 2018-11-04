@@ -15,6 +15,7 @@ map.addControl(new mapboxgl.GeolocateControl({
 }));
 
 
+var isfav = 1;
 function loadDatatable() {
 	
 	var url;
@@ -39,6 +40,15 @@ function loadDatatable() {
 			 document.getElementById("direction").onclick=function(){getRoute([jsonData[k]['lat'], jsonData[k]['lng']] )};
 		}
 		
+	});
+	
+	//check if this location is favourite
+	$.get('http://localhost/android/services.php?action=checkfav&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
+		isfav = result;
+		console.log(isfav);
+		if (result == 0){
+			document.getElementById("favimg").src="./images/emptyheart.png";
+		}
 	});
 }
 
@@ -149,3 +159,24 @@ function ratingfunc() {
 }
 ratingfunc();
 
+function favourite() {
+	document.getElementById("favimg").src="./images/emptyheart.png";
+
+	if (isfav == 0){
+		$.get('http://localhost/android/services.php?action=addfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
+			
+			document.getElementById("favimg").src="./images/fullheart.png";
+			isfav = 1;
+		});
+	}else {
+		$.get('http://localhost/android/services.php?action=delfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
+			
+			document.getElementById("favimg").src="./images/emptyheart.png";
+			isfav = 0;
+		});
+	}
+	/*var toast = new iqwerty.toast.Toast();
+
+	toast.setText('This is a basic toast message!')	.show();*/
+
+}

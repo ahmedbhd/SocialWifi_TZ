@@ -31,11 +31,41 @@
 
 </head>
 <body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sidebarNavigation" data-sidebarClass="navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"> <i class="fas fa-map-marked-alt fa-sm"></i> Favourite</a>
+        <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	        <div class="text-center addjob-container">
+	   		 <div class="circle-img-background-company">
+	   		 	<img src="./images/fav.png" style="width: 100px; height: 100px; margin: auto; border: 5px solid #fecc35;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
+	   		 </div>
+	   		 <br>
+	    		<h3 style="color:#FFF">Foulen ben Foulen </h3>
+	    	</div>
+	    	 <br>
+	    	  
+	    	<ul class="navbar-nav mr-auto">
+                <li class="nav-item active" >
+                    <a class="nav-link" href="map.html" style="font-size:24px">
+                   		 <i class="fas fa-map-marked-alt fa-sm"></i> Home   
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favourite.html" style="font-size:24px"><i class="fas fa-heart fa-sm"></i> Favoris</a>
+                </li>
+             
+            </ul>
+            
+        </div>
+    </nav>
 <div mbsc-page class="demo-swipe-actions">
     <div mbsc-form>
         <div class="mbsc-form-group">
-            <div class="mbsc-form-group-title">Action list 3</div>
+            <div class="mbsc-form-group-title"></div>
             <ul id="action-list" class="mbsc-cloak">
                 
             </ul>
@@ -80,7 +110,7 @@
     });
     
     function remove (id) {
-		$.get('http://localhost/android/services.php?action=delfavourite&id_loc='+id+'&id_user='+1, function(string) {
+		$.get('http://localhost/android/services.php?action=delfavourite&id_loc='+id+'&id_user='+sessionStorage.getItem('iduser'), function(string) {
 			console.log(string);		
 			
 		});
