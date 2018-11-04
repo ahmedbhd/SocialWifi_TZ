@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 	        <div class="text-center addjob-container">
 	   		 <div class="circle-img-background-company">
-	   		 	<img src="./images/fav.png" style="width: 100px; height: 100px; margin: auto; border: 5px solid #fecc35;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
+	   		 	<img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto; border: 5px solid #fecc35;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
 	   		 </div>
 	   		 <br>
 	    		<h3 style="color:#FFF">Foulen ben Foulen </h3>
@@ -100,9 +100,12 @@
                 text: 'Delete',
                 confirm: true,
                 action: function (event, inst) {
-                console.log(event.target.id);
+                	console.log(event.target.id);
                 	remove(event.target.id);
                     inst.remove(event.target);
+                     mobiscroll.toast({
+                        message: 'Deleted'
+                    });
                     return false;
                 }
             }

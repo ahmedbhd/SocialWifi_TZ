@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiZ2hhc3NlbmFiIiwiYSI6ImNqbmFtNTFpNTcxeXUza254bmdnOHUzaXYifQ.b2C0rFd7X_Fi3tg6eAr7MQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWhtZWRiaGQiLCJhIjoiY2phN2d0anNhOGNpZjJ3cGc1OGRucTR5bCJ9.41AcXEAMRs_Y3sMKXxLJHA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/streets-v9',
@@ -86,8 +86,9 @@ function getRoute(end) {
 
 				console.log(start);
 				console.log(e);
-				var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + lat + ',' + lng + ';' + e[0] + ',' + e[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
-				  $.ajax({
+				var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + lat + ',' + lng + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
+				console.log(directionsRequest) ;
+				$.ajax({
 				    method: 'GET',
 				    url: directionsRequest,
 				  }).done(function(data) {
@@ -105,7 +106,37 @@ function getRoute(end) {
 				      paint: {
 				        'line-width': 2
 				      }
+				      
 				    });
+				    map.addLayer({
+				    	  id: 'start',
+				    	  type: 'circle',
+				    	  source: {
+				    	    type: 'geojson',
+				    	    data: {
+				    	      type: 'Feature',
+				    	      geometry: {
+				    	        type: 'Point',
+				    	        coordinates: start
+				    	      }
+				    	    }
+				    	  }
+				    	});
+				    	map.addLayer({
+				    	  id: 'end',
+				    	  type: 'circle',
+				    	  source: {
+				    	    type: 'geojson',
+				    	    data: {
+				    	      type: 'Feature',
+				    	      geometry: {
+				    	        type: 'Point',
+				    	        coordinates: end
+				    	      }
+				    	    }
+				    	  }
+				    	});
+
 				    // this is where the code from the next step will go
 				  });
 				}
@@ -167,16 +198,16 @@ function favourite() {
 			
 			document.getElementById("favimg").src="./images/fullheart.png";
 			isfav = 1;
+			iqwerty.toast.Toast('Favourite added!');
 		});
 	}else {
 		$.get('http://localhost/android/services.php?action=delfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
 			
 			document.getElementById("favimg").src="./images/emptyheart.png";
-			isfav = 0;
+			isfav = 0;	
+			iqwerty.toast.Toast('Favourite deleted!');
 		});
 	}
-	/*var toast = new iqwerty.toast.Toast();
-
-	toast.setText('This is a basic toast message!')	.show();*/
+	
 
 }

@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiZ2hhc3NlbmFiIiwiYSI6ImNqbmFtNTFpNTcxeXUza254bmdnOHUzaXYifQ.b2C0rFd7X_Fi3tg6eAr7MQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWhtZWRiaGQiLCJhIjoiY2phN2d0anNhOGNpZjJ3cGc1OGRucTR5bCJ9.41AcXEAMRs_Y3sMKXxLJHA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/streets-v9',
@@ -84,17 +84,19 @@ function ajouterloc() {
 				modal.style.display = "none";
 				window.location.assign("map.html");
 			});
-		},
-		function(error) {
-			console.log("Error: ", error);
-		},
-			{
-				enableHighAccuracy: true
-			}
-		);
+			},
+			function(error) {
+				console.log("Error: ", error);
+			},
+				{
+					enableHighAccuracy: true
+				}
+			);
+			iqwerty.toast.Toast('WIFI added!');
 		}
 	else {
 		console.log('allow location');
+		iqwerty.toast.Toast('Allow location!');
 	}
 	
 	
@@ -110,35 +112,54 @@ function Search () {
 	var input = document.getElementById("myInput");
 	var filter = input.value.toUpperCase();
 	
-	for(var k in locations){
+	if (filter.length ===0)  {
+		map.flyTo({
+	        // These options control the ending camera position: centered at
+	        // the target, at zoom level 9, and north up.
+	        center: [10, 35],
+	        zoom: 5,
+	        bearing: 0,
+
+	        // These options control the flight curve, making it move
+	        // slowly and zoom out almost completely before starting
+	        // to pan.
+	        speed: 2, // make the flying slow
+	        curve: 1, // change the speed at which it zooms out
+
+	        // This can be any easing function: it takes a number between
+	        // 0 and 1 and returns another number between 0 and 1.
+	        easing: function (t) {
+	            return t;
+	        }
+	    });
+	}
+	if (/\S/.test(filter)) {
+		for(var k in locations){
+			if (locations[k]['desc_loc'].toUpperCase().indexOf(filter) > -1)
+				{
+					map.flyTo({
+				        // These options control the ending camera position: centered at
+				        // the target, at zoom level 9, and north up.
+				        center: [locations[k]['lng'], locations[k]['lat']],
+				        zoom: 15,
+				        bearing: 0,
 		
+				        // These options control the flight curve, making it move
+				        // slowly and zoom out almost completely before starting
+				        // to pan.
+				        speed: 2, // make the flying slow
+				        curve: 1, // change the speed at which it zooms out
 		
-		if (locations[k]['desc_loc'].toUpperCase().indexOf(filter) > -1)
-			{
-				map.flyTo({
-			        // These options control the ending camera position: centered at
-			        // the target, at zoom level 9, and north up.
-			        center: [locations[k]['lng'], locations[k]['lat']],
-			        zoom: 15,
-			        bearing: 0,
-	
-			        // These options control the flight curve, making it move
-			        // slowly and zoom out almost completely before starting
-			        // to pan.
-			        speed: 2, // make the flying slow
-			        curve: 1, // change the speed at which it zooms out
-	
-			        // This can be any easing function: it takes a number between
-			        // 0 and 1 and returns another number between 0 and 1.
-			        easing: function (t) {
-			            return t;
-			        }
-			    });
-			}
+				        // This can be any easing function: it takes a number between
+				        // 0 and 1 and returns another number between 0 and 1.
+				        easing: function (t) {
+				            return t;
+				        }
+				    });
+				}
 		
-		
-		
-		  
+		}
+				  
 	}
 	
 	
