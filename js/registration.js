@@ -41,7 +41,7 @@ function loadDatatable() {
 	
 	var url;
 
-	url = 'http://localhost/android/add_fbuser.php?email='+em+'&username='+urn+'&password='+pw;
+	url = 'http://social-wifi.000webhostapp.com/tizen/add_fbuser.php?email='+em+'&username='+urn+'&password='+pw;
 
 	console.log('URL : ' + url);
 	$.getJSON(url, function(data) {

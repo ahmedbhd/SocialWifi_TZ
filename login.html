@@ -58,11 +58,11 @@ function login() {
 	
 	var url;
 
-	url = 'http://localhost/android/login.php?username='+urn+'&password='+pw;
+	url = 'http://social-wifi.000webhostapp.com/tizen/login.php?username='+urn+'&password='+pw;
 
 	console.log('URL : ' + url);
 	$.getJSON(url, function(data) {
-	console.log(data);
+		console.log(data);
 		if (data == 0){
 			document.getElementById('passwordHelp').style.display = 'none';
 			document.getElementById('usernameHelp').style.display = '';

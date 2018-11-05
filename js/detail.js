@@ -20,7 +20,7 @@ function loadDatatable() {
 	
 	var url;
 
-	url = 'http://localhost/android/services.php?action=selectaloc&idloc='+sessionStorage.getItem('idloc');
+	url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=selectaloc&idloc='+sessionStorage.getItem('idloc');
 
 	console.log('URL : ' + url);
 	$.getJSON(url, function(jsonData) {
@@ -43,7 +43,7 @@ function loadDatatable() {
 	});
 	
 	//check if this location is favourite
-	$.get('http://localhost/android/services.php?action=checkfav&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
+	$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=checkfav&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
 		isfav = result;
 		console.log(isfav);
 		if (result == 0){
@@ -159,7 +159,7 @@ function ratingfunc() {
 	//ToDo : WebService
 	var url;
 
-	$.get('http://localhost/android/services.php?action=selectratings&loc='+sessionStorage.getItem('idloc'), function(string) {
+	$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=selectratings&loc='+sessionStorage.getItem('idloc'), function(string) {
 		console.log(string);
 		$('#rating').rating('update', string);
 		
@@ -172,11 +172,11 @@ function ratingfunc() {
 		    console.log(value);
 		    //ToDo : WebService
 		    var user = sessionStorage.getItem('iduser');
-		      $.get('http://localhost/android/services.php?action=addrate&rate='+value+'&loc='+sessionStorage.getItem('idloc')+'&user='+user, function(string) {
+		      $.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=addrate&rate='+value+'&loc='+sessionStorage.getItem('idloc')+'&user='+user, function(string) {
 				console.log(string);
 				var url;
 
-				$.get('http://localhost/android/services.php?action=selectratings&loc='+sessionStorage.getItem('idloc'), function(val) {
+				$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=selectratings&loc='+sessionStorage.getItem('idloc'), function(val) {
 					console.log(val);
 					$('#rating').rating('update', val);
 					
@@ -194,14 +194,14 @@ function favourite() {
 	document.getElementById("favimg").src="./images/emptyheart.png";
 
 	if (isfav == 0){
-		$.get('http://localhost/android/services.php?action=addfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
+		$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=addfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
 			
 			document.getElementById("favimg").src="./images/fullheart.png";
 			isfav = 1;
 			iqwerty.toast.Toast('Favourite added!');
 		});
 	}else {
-		$.get('http://localhost/android/services.php?action=delfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
+		$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=delfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
 			
 			document.getElementById("favimg").src="./images/emptyheart.png";
 			isfav = 0;	

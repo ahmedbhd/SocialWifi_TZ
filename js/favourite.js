@@ -1,7 +1,7 @@
 function loadDate(){
 	var url;
 
-	url = 'http://localhost/android/services.php?action=selectfav&id_user='+sessionStorage.getItem('iduser');
+	url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=selectfav&id_user='+sessionStorage.getItem('iduser');
 
 	console.log('URL : ' + url);
 	$.getJSON(url, function(jsonData) {

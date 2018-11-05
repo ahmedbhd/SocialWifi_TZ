@@ -1,25 +1,85 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWhtZWRiaGQiLCJhIjoiY2phN2d0anNhOGNpZjJ3cGc1OGRucTR5bCJ9.41AcXEAMRs_Y3sMKXxLJHA';
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9',
-    center: [10, 35], // starting position
-    zoom: 5 // starting zoom
-});
 
-// Add geolocate control to the map.
-map.addControl(new mapboxgl.GeolocateControl({
-    positionOptions: {
-        enableHighAccuracy: true
-    },
-    trackUserLocation: true
-}));
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 36.6735494, lng: 10.4066731},
+    zoom: 6
+  });
+  //var infoWindow = new google.maps.InfoWindow({map: map});
+
+  /* var pos = {
+	        lat: 36.6735494,
+	        lng: 10.4066731
+	      };
+
+	      infoWindow.setPosition(pos);
+	      infoWindow.setContent('Location found.');
+	      map.setCenter(pos);*/
+
+	      function handleEvent(event) {
+	          alert(event.latLng.lat());
+	    	    //document.getElementById('lat').value = event.latLng.lat();
+	    	    //document.getElementById('lng').value = event.latLng.lng();
+	    	}
+
+	      /* var marker = new google.maps.Marker({
+	    	    position: pos,
+	    	    map: map,
+	    	    title: "I'm here",
+	    	    draggable: true
+	    	  });
+	      map.setCenter(pos);
+
+	      marker.addListener('dragend', handleEvent); */
+
+  // Try HTML5 geolocation.
+  /*if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      map.setCenter(pos);
+
+      function handleEvent(event) {
+          alert(event.latLng.lat());
+    	    //document.getElementById('lat').value = event.latLng.lat();
+    	    //document.getElementById('lng').value = event.latLng.lng();
+    	}
+
+      var marker = new google.maps.Marker({
+    	    position: pos,
+    	    map: map,
+    	    title: "I'm here",
+    	    draggable: true
+    	  });
+
+      marker.addListener('dragend', handleEvent);
+	  
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }*/
+}
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
 
 var locations;
 function loadDatatable() {
 	
 	var url;
 
-	url = 'http://localhost/android/services.php?action=selectloc';
+	url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=selectloc';
 
 	console.log('URL : ' + url);
 	$.getJSON(url, function(jsonData) {
@@ -43,11 +103,23 @@ function loadDatatable() {
 			div.setAttribute( "onclick", "javascript:showdetail('"+id+"');" );
 			
 			  // make a marker for each feature and add to the map
-			  new mapboxgl.Marker(el)
+		/*	  new mapboxgl.Marker(el)
 			  .setLngLat([jsonData[k]['lng'], jsonData[k]['lat']])
 			  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
 			  .setDOMContent(div))
-			  .addTo(map);
+			  .addTo(map); */
+			var pos = {
+			        lat: parseFloat (jsonData[k]['lat']),
+			        lng:  parseFloat (jsonData[k]['lng'])
+			      };
+			
+			  var marker = new google.maps.Marker({
+		    	    position: pos,
+		    	    map: map,
+		    	    title: jsonData[k]['desc_loc'],
+		    	    draggable: false,
+		    	    icon : "./images/mapicon.png"
+		    	  });
 			  
 		}
 		
@@ -77,7 +149,7 @@ function ajouterloc() {
 			
 			var url;
 
-			url = 'http://localhost/android/services.php?action=addloc&desc='+ssid+'&pw='+pw+'&lat='+lat+'&lng='+lng+'&img=null';
+			url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=addloc&desc='+ssid+'&pw='+pw+'&lat='+lat+'&lng='+lng+'&img=null';
 
 			console.log('URL : ' + url);
 			$.get(url, function(data) {

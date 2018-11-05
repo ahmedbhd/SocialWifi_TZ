@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css/b4_sidebar.css" />
 	<link rel="stylesheet" type="text/css" href="css/map.css" />
 	<link rel="stylesheet" type="text/css" href="libs/fontawesome/css/all.css" />
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+    <!--<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />-->
     <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css"/>
     
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -62,6 +62,7 @@
             
         </div>
     </nav>
+
 <div mbsc-page class="demo-swipe-actions">
     <div mbsc-form>
         <div class="mbsc-form-group">
@@ -113,16 +114,21 @@
     });
     
     function remove (id) {
-		$.get('http://localhost/android/services.php?action=delfavourite&id_loc='+id+'&id_user='+sessionStorage.getItem('iduser'), function(string) {
+		$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=delfavourite&id_loc='+id+'&id_user='+sessionStorage.getItem('iduser'), function(string) {
 			console.log(string);		
 			
 		});
 	}
     
 </script>
-<script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/favourite.js"></script>
+
 
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/fontawesome/js/all.js"></script>
+<script src="js/b4_sidebar.js"></script>
+<script src="js/favourite.js"></script>
 </html>

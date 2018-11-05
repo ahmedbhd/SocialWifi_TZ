@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/SocialWifi" version="1.0.0" viewmodes="maximized">
-    <access origin="http://192.168.1.5" subdomains="true"/>
+    <access origin="*" subdomains="true"/>
     <tizen:application id="8MwP5mqoYg.SocialWifi" package="8MwP5mqoYg" required_version="2.4"/>
     <content src="login.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>
     <name>SocialWifi</name>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/location"/>
     <tizen:profile name="mobile"/>
 </widget>
