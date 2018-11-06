@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="css/b4_sidebar.css" />
 <link rel="stylesheet" type="text/css" href="css/map.css" />
 <link rel="stylesheet" type="text/css" href="libs/fontawesome/css/all.css" />
-<!--<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />-->
 
 
 
@@ -85,11 +84,12 @@
 
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark sidebarNavigation" data-sidebarClass="navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"> <i class="fas fa-map-marked-alt fa-sm"></i> Map</a>
-        <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+		<button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a class="navbar-brand" href="#"> <i class="fas fa-map-marked-alt fa-sm"></i> Map</a>
+        
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 	        <div class="text-center addjob-container">
@@ -97,7 +97,7 @@
 	   		 	<img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto; border: 5px solid #fecc35;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
 	   		 </div>
 	   		 <br>
-	    		<h3 style="color:#FFF">Foulen ben Foulen </h3>
+	    		<h3 id="foulen" style="color:#FFF">Foulen ben Foulen </h3>
 	    	</div>
 	    	 <br>
 	    	  
@@ -108,26 +108,35 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="favourite.html" style="font-size:24px"><i class="fas fa-heart fa-sm"></i> Favoris</a>
+                    <a class="nav-link" href="favourite.html" style="font-size:24px"><i class="fas fa-heart fa-sm"></i> Favourites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mylocations.html" style="font-size:24px"><i class="fas fa-book-reader fa-sm"></i></i> My Locations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="logout()" href="login.html" style="font-size:24px"><i class="fas fa-sign-out-alt fa-sm"></i></i> Logout</a>
                 </li>
              
             </ul>
             
         </div>
     </nav>
-
-    <!--  -->
+	<div class="mapcontainer">
+    <!-- SEARCH BAR -->
 		<input type="text" id="myInput" onkeyup="Search()" placeholder="Search for wifi..." title="Type in a ssid">
 	
 	<div id="map"></div>
 	<br>
 	
 	
-	<div style="text-align:center">
-	<button class='btn btn-lg ' id="myBtn" style='background-color:transparent; border: 2px solid #fecc35;'>
-	   <i class="fas fa-plus" style="color:#71fe35"></i><span style="color:white;"> Add new access point</span>
+	
+	<div style="text-align:center " >
+	<button class='btn btn-lg ' id="myBtn" style='background-color:transparent; border: 2px solid #fecc35; text-align:center'>
+	   <i class="fas fa-plus" style="color:#71fe35"></i><span style="color:white ; "> Add new access point</span>
 	</button>
+	
 	</div>
+	<div id="snackbar">Some text some message..</div>
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 		
@@ -135,6 +144,7 @@
 		<div class="modal-content" style="text-align:center">
 			<span class="close">&times;</span>
 			<form action="/action_page.php">
+			<br><br>
 				<input type="text" name="ssid" id ="ssid" placeholder=" SSID" style="text-align:center"><br><br>
 				<input type="text" name="pw" id ="pw"placeholder="PASSWORD" style="text-align:center"><br><br>
 				<input type="button" value="Save" id ="add" onclick="ajouterloc()"  />
@@ -142,7 +152,7 @@
 		</div>
 		
 	</div>
-
+</div>
 
 </body>
 
@@ -152,13 +162,14 @@
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/fontawesome/js/all.js"></script>
 <script src="js/b4_sidebar.js"></script>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+<!--<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>-->
+<!--<script src="js/toast.js"></script>-->
 <script src="js/map.js"></script>
-<script src="js/toast.js"></script>
+
 <script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBglTeKV4O47GRsJLAfRoLHcoxmDmc4PuA&signed_in=true&callback=initMap"
 		async defer>
-    </script>
+</script>
 <script>
 	// Get the modal
 	var modal = document.getElementById('myModal');

@@ -14,7 +14,7 @@ function initMap() {
 
 	      infoWindow.setPosition(pos);
 	      infoWindow.setContent('Location found.');
-	      map.setCenter(pos);*/
+	      map.setCenter(pos);
 
 	      function handleEvent(event) {
 	          alert(event.latLng.lat());
@@ -22,7 +22,7 @@ function initMap() {
 	    	    //document.getElementById('lng').value = event.latLng.lng();
 	    	}
 
-	      /* var marker = new google.maps.Marker({
+	       var marker = new google.maps.Marker({
 	    	    position: pos,
 	    	    map: map,
 	    	    title: "I'm here",
@@ -91,28 +91,34 @@ function loadDatatable() {
 			
 			var div = document.createElement("div")
 			var h3 = document.createElement("h3")
-			var title = document.createTextNode(jsonData[k]['desc_loc']);
-			var p = document.createElement("p");
-			var pw = document.createTextNode(jsonData[k]['wifi_pass']);
-			h3.appendChild(title);
-			p.appendChild(pw);
+			h3.innerHTML = jsonData[k]['desc_loc'];
+			h3.style='color:black;';
+			var p = document.createElement("h4");
+			p.innerHTML = jsonData[k]['wifi_pass'];
+			p.style='color:gold;';
 			div.appendChild(h3);
-			div.appendChild(pw);
+			div.appendChild(p);
 			
 			var id = jsonData[k]['id_loc'];
 			div.setAttribute( "onclick", "javascript:showdetail('"+id+"');" );
-			
-			  // make a marker for each feature and add to the map
-		/*	  new mapboxgl.Marker(el)
-			  .setLngLat([jsonData[k]['lng'], jsonData[k]['lat']])
-			  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-			  .setDOMContent(div))
-			  .addTo(map); */
+			div.setAttribute( "style", "text-align:center" );
 			var pos = {
 			        lat: parseFloat (jsonData[k]['lat']),
 			        lng:  parseFloat (jsonData[k]['lng'])
 			      };
 			
+/*			var contentString = '<div style="text-align:center" id="content">'+
+		      ' <span class="wifname" style=" color: black;>'+
+	  		 	'<i class="fas fa-wifi"></i>  <span id="ssid"> '+jsonData[k]['desc_loc']+'</span>'+
+	  	  		 '</span><br>'+
+	  	  		 
+	  	   		 '<span class="wifpassword" style=" color: black;">'+
+	  	  		 	'<i class="fas fa-unlock-alt"></i>      <span id="pass">'+jsonData[k]['wifi_pass']+'</span> '+
+	  	  		 '</span> '+
+		      '</div>';
+*/
+				
+		  
 			  var marker = new google.maps.Marker({
 		    	    position: pos,
 		    	    map: map,
@@ -121,35 +127,58 @@ function loadDatatable() {
 		    	    icon : "./images/mapicon.png"
 		    	  });
 			  
+			  addInfoWindow(marker, div);
+
 		}
 		
 	});
 }
 
+function addInfoWindow(marker, message) {
+
+    var infoWindow = new google.maps.InfoWindow({
+        content: message
+    });
+
+    google.maps.event.addListener(marker, 'click', function () {
+        infoWindow.open(map, marker);
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+          } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+          }
+    });
+}
 loadDatatable();
 
 function ajouterloc() {
 	
 	var lat = null;
 	var lng = null;
-	if (navigator.geolocation) {
+	var ssid = document.getElementById('ssid').value;
+	var pw= document.getElementById('pw').value;
+	
+	if (ssid.length === 0 || ssid.trim()==='') {
+		showToast("SSID can't be empty!");
+		return ;
+	}
+	
+	if ( pw.trim()==='' || pw.length < 8) {
+		showToast("Invalid Password!");
+		return ;
+	}
 		navigator.geolocation.getCurrentPosition(function(position) {
-			var locationMarker = null;
-			if (locationMarker){
-			  // return if there is a locationMarker bug
-			  return;
-			}
-
+			
 			// sets default position to your position
-			lat = position.coords["latitude"];
-			lng = position.coords["longitude"];
-			var ssid = document.getElementById('ssid').value;
-			var pw= document.getElementById('pw').value;
+			lat = position.coords.latitude;
+			lng = position.coords.longitude;
 			
 			
+		    console . log ( 'Latitude: ' + position . coords . latitude   + 'Longitude: ' + position . coords . longitude );   
+
 			var url;
 
-			url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=addloc&desc='+ssid+'&pw='+pw+'&lat='+lat+'&lng='+lng+'&img=null';
+			url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=addloc&desc='+ssid+'&pw='+pw+'&lat='+lat+'&lng='+lng+'&img=null'+'&userid='+sessionStorage.getItem("iduser");
 
 			console.log('URL : ' + url);
 			$.get(url, function(data) {
@@ -159,19 +188,20 @@ function ajouterloc() {
 			},
 			function(error) {
 				console.log("Error: ", error);
-			},
-				{
-					enableHighAccuracy: true
-				}
+				M.toast({html: 'Add Failed!'})
+			},{maximumAge: 9999999}
 			);
-			iqwerty.toast.Toast('WIFI added!');
-		}
-	else {
-		console.log('allow location');
-		iqwerty.toast.Toast('Allow location!');
-	}
+			//iqwerty.toast.Toast('WIFI added!');
+		
 	
 	
+}
+
+function showToast(msg){
+	var x = document.getElementById("snackbar");
+	x.innerHTML  = msg;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 function showdetail(id) {
@@ -185,49 +215,21 @@ function Search () {
 	var filter = input.value.toUpperCase();
 	
 	if (filter.length ===0)  {
-		map.flyTo({
-	        // These options control the ending camera position: centered at
-	        // the target, at zoom level 9, and north up.
-	        center: [10, 35],
-	        zoom: 5,
-	        bearing: 0,
-
-	        // These options control the flight curve, making it move
-	        // slowly and zoom out almost completely before starting
-	        // to pan.
-	        speed: 2, // make the flying slow
-	        curve: 1, // change the speed at which it zooms out
-
-	        // This can be any easing function: it takes a number between
-	        // 0 and 1 and returns another number between 0 and 1.
-	        easing: function (t) {
-	            return t;
-	        }
-	    });
+		
+			map.setZoom(5);
+			map.panTo({lat: 35, lng: 10 });
+         
+		
 	}
 	if (/\S/.test(filter)) {
 		for(var k in locations){
 			if (locations[k]['desc_loc'].toUpperCase().indexOf(filter) > -1)
 				{
-					map.flyTo({
-				        // These options control the ending camera position: centered at
-				        // the target, at zoom level 9, and north up.
-				        center: [locations[k]['lng'], locations[k]['lat']],
-				        zoom: 15,
-				        bearing: 0,
-		
-				        // These options control the flight curve, making it move
-				        // slowly and zoom out almost completely before starting
-				        // to pan.
-				        speed: 2, // make the flying slow
-				        curve: 1, // change the speed at which it zooms out
-		
-				        // This can be any easing function: it takes a number between
-				        // 0 and 1 and returns another number between 0 and 1.
-				        easing: function (t) {
-				            return t;
-				        }
-				    });
+					
+						map.setZoom(17);
+						map.panTo({lat: parseFloat (locations[k]['lat']), lng:  parseFloat (locations[k]['lng']) });
+			        
+					
 				}
 		
 		}

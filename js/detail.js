@@ -1,21 +1,21 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWhtZWRiaGQiLCJhIjoiY2phN2d0anNhOGNpZjJ3cGc1OGRucTR5bCJ9.41AcXEAMRs_Y3sMKXxLJHA';
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9',
-    center: [10, 35], // starting position
-    zoom: 5 // starting zoom
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 36.6735494, lng: 10.4066731},
+    zoom: 6
 });
-
-// Add geolocate control to the map.
-map.addControl(new mapboxgl.GeolocateControl({
-    positionOptions: {
-        enableHighAccuracy: true
-    },
-    trackUserLocation: true
-}));
-
-
+  
+}
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	  infoWindow.setPosition(pos);
+	  infoWindow.setContent(browserHasGeolocation ?
+	                        'Error: The Geolocation service failed.' :
+	                        'Error: Your browser doesn\'t support geolocation.');
+}
 var isfav = 1;
+
+
 function loadDatatable() {
 	
 	var url;
@@ -33,11 +33,27 @@ function loadDatatable() {
 			var el = document.createElement('div');
 			el.className = 'marker';
 			  // make a marker for each feature and add to the map
-			  new mapboxgl.Marker(el)
-			  .setLngLat([jsonData[k]['lng'], jsonData[k]['lat']])
-			  .addTo(map);
-			  
-			 document.getElementById("direction").onclick=function(){getRoute([jsonData[k]['lat'], jsonData[k]['lng']] )};
+
+			  var pos = {
+				        lat: parseFloat (jsonData[k]['lat']),
+				        lng:  parseFloat (jsonData[k]['lng'])
+				      };
+			  var marker = new google.maps.Marker({
+		    	    position: pos,
+		    	    map: map,
+		    	    title: jsonData[k]['desc_loc'],
+		    	    draggable: false,
+		    	    icon : "./images/mapicon.png"
+		    	  });
+			  google.maps.event.addListener(marker, 'click', function () {
+			        getRoute(marker.position )
+			        if (marker.getAnimation() !== null) {
+			            marker.setAnimation(null);
+			          } else {
+			            marker.setAnimation(google.maps.Animation.BOUNCE);
+			          }
+			    });
+			  map.setCenter(pos);
 		}
 		
 	});
@@ -56,104 +72,98 @@ loadDatatable();
 
 
 function getRoute(end) {
-	 
+	
+    showToast( "Loading direction!");
 	console.log("Loading route");
 
 	  
 	  	var lat = null;
 		var lng = null;
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-				var locationMarker = null;
-				if (locationMarker){
-				  // return if there is a locationMarker bug
-				  return;
-				}
+		
+		var markerArray = [];
 
-				// sets default position to your position
-				lat = position.coords["latitude"];
-				lng = position.coords["longitude"];
-				
-				var l = parseFloat (end [0] );
-				var ln = parseFloat (end [1] );
-				if (lat != null) {
-					
-				var e = [l, ln];
-				var start = [lat, lng];
-				
-				//var ls = new mapboxgl.LngLat(lat, lng);
-				//var le = new mapboxgl.LngLat(l, ln);
+        // Instantiate a directions service.
+        var directionsService = new google.maps.DirectionsService;
+        
+		// Create a renderer for directions and bind it to the map.
+        var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
 
-				console.log(start);
-				console.log(e);
-				var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + lat + ',' + lng + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
-				console.log(directionsRequest) ;
-				$.ajax({
-				    method: 'GET',
-				    url: directionsRequest,
-				  }).done(function(data) {
-				    var route = data.routes[0].geometry;
-				    map.addLayer({
-				      id: 'route',
-				      type: 'line',
-				      source: {
-				        type: 'geojson',
-				        data: {
-				          type: 'Feature',
-				          geometry: route
-				        }
-				      },
-				      paint: {
-				        'line-width': 2
-				      }
-				      
-				    });
-				    map.addLayer({
-				    	  id: 'start',
-				    	  type: 'circle',
-				    	  source: {
-				    	    type: 'geojson',
-				    	    data: {
-				    	      type: 'Feature',
-				    	      geometry: {
-				    	        type: 'Point',
-				    	        coordinates: start
-				    	      }
-				    	    }
-				    	  }
-				    	});
-				    	map.addLayer({
-				    	  id: 'end',
-				    	  type: 'circle',
-				    	  source: {
-				    	    type: 'geojson',
-				    	    data: {
-				    	      type: 'Feature',
-				    	      geometry: {
-				    	        type: 'Point',
-				    	        coordinates: end
-				    	      }
-				    	    }
-				    	  }
-				    	});
+        // Instantiate an info window to hold step text.
+        var stepDisplay = new google.maps.InfoWindow;
+        
+        calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map , end);
+	  
+}
 
-				    // this is where the code from the next step will go
-				  });
-				}
-			},
+function showToast(msg){
+	var x = document.getElementById("snackbar");
+	x.innerHTML  = msg;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+function calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map , end ) {
+      
+      
+      
+     // navigator.geolocation.getCurrentPosition(function(position) {
+			
+			// sets default position to your position
+		/*	lat = position.coords.latitude;
+			lng = position.coords.longitude;*/
+			
+			lat = 36.9045869;
+			lng = 10.1866451;
+			// First, remove any existing markers from the map.
+		      for (var i = 0; i < markerArray.length; i++) {
+		        markerArray[i].setMap(null);
+		      }
+
+		      // Retrieve the start and end locations and create a DirectionsRequest using
+		      // WALKING directions.
+		      directionsService.route({
+		        origin: {lat :lat,lng : lng},
+		        destination: end,
+		        travelMode: 'DRIVING'
+		      }, function(response, status) {
+		        // Route the directions and pass the response to a function to create
+		        // markers for each step.
+		        if (status === 'OK') {
+		          directionsDisplay.setDirections(response);
+		          showSteps(response, markerArray, stepDisplay, map);
+		        } else {
+		          window.alert('Directions request failed due to ' + status);
+		        }
+		      });
+		/*},
 			function(error) {
 				console.log("Error: ", error);
-			},
-				{
-					enableHighAccuracy: true
-				}
-			);
-			}
-		else {
-			console.log('allow location');
-		}
-	  
-	}
+			},{maximumAge: 9999999}
+			);*/
+ }
+function showSteps(directionResult, markerArray, stepDisplay, map) {
+    // For each step, place a marker, and add the text to the marker's infowindow.
+    // Also attach the marker to an array so we can keep track of it and remove it
+    // when calculating new routes.
+    var myRoute = directionResult.routes[0].legs[0];
+    for (var i = 0; i < myRoute.steps.length; i++) {
+      var marker = markerArray[i] = markerArray[i] || new google.maps.Marker;
+      marker.setMap(map);
+      marker.setPosition(myRoute.steps[i].start_location);
+      attachInstructionText(
+          stepDisplay, marker, myRoute.steps[i].instructions, map);
+    }
+  }
+function attachInstructionText(stepDisplay, marker, text, map) {
+    google.maps.event.addListener(marker, 'click', function() {
+      // Open an info window when the marker is clicked on, containing the text
+      // of the step.
+      stepDisplay.setContent(text);
+      stepDisplay.open(map, marker);
+    });
+  }
+
+
+
 
 function ratingfunc() {
 	//ToDo : WebService
@@ -179,7 +189,7 @@ function ratingfunc() {
 				$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=selectratings&loc='+sessionStorage.getItem('idloc'), function(val) {
 					console.log(val);
 					$('#rating').rating('update', val);
-					
+					showToast("Raiting updated!")
 					
 				});
 				
@@ -188,6 +198,7 @@ function ratingfunc() {
 		}
 	});
 }
+
 ratingfunc();
 
 function favourite() {
@@ -198,16 +209,14 @@ function favourite() {
 			
 			document.getElementById("favimg").src="./images/fullheart.png";
 			isfav = 1;
-			iqwerty.toast.Toast('Favourite added!');
+			showToast("Favourite Added!")
 		});
 	}else {
 		$.get('http://social-wifi.000webhostapp.com/tizen/services.php?action=delfavourite&id_loc='+sessionStorage.getItem('idloc')+'&id_user='+sessionStorage.getItem('iduser'), function(result) {
 			
 			document.getElementById("favimg").src="./images/emptyheart.png";
 			isfav = 0;	
-			iqwerty.toast.Toast('Favourite deleted!');
+			showToast("Favourite deleted!")
 		});
 	}
-	
-
 }

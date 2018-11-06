@@ -8,15 +8,15 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>HMMbvZ3mZQ65Giu5Kl8GJp4wNxsNIMt0p1e4jd/uFag=</DigestValue>
+<DigestValue>E3v+EL4JKJvx4rrYJPmADI2/dC/DqCSY9jCdjxkJmVI=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>7+ilY1PWYCzkFgxCGbhNW/PGDsX1y0d5oCeJh1C9QfU=</DigestValue>
+<DigestValue>JUlDghTKZe1VafD8tlu2pS2ziowyubSlQFK6VywoVo8=</DigestValue>
 </Reference>
 <Reference URI="css%2Fb4_sidebar.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>JntTmVpFY0BoeJXLlvwp+36LvE25zgaA2IaumwOSOeY=</DigestValue>
+<DigestValue>uwZqfEAr0BL8h09AUc8+/mhTkvd4CyBDaH2nZ5xgDNU=</DigestValue>
 </Reference>
 <Reference URI="css%2Ficons_mobiscroll.ttf">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -30,10 +30,6 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>LN39rPaxfWJwGf8qhHeWnEp/cS5TH/SIXRu/8ihrILY=</DigestValue>
 </Reference>
-<Reference URI="css%2Fmobiscroll.javascript.min.css">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>zBD23bPfQuJ3TrtzGGAQpgCQFnKZvTkiXBVkWoaSSjY=</DigestValue>
-</Reference>
 <Reference URI="css%2Fstar-rating.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>srdopXlb24SS6/23efJ1/+RfSwZBZ+93Urdcvk3TTVY=</DigestValue>
@@ -44,15 +40,15 @@
 </Reference>
 <Reference URI="css%2Fstyle.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>gvMH/HNIysITJOfpm2FiJvSBSg33cya44cs2LtUYsWk=</DigestValue>
+<DigestValue>ueqEKGKRGvC11TS6taA39tpjzPn9wDoV6TdBxv1LW7g=</DigestValue>
 </Reference>
 <Reference URI="detail.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>VNjt/Fc/qWB/FsZ1lbbjb+S9d2n3SoFTR54Y+F9bof0=</DigestValue>
+<DigestValue>8rDrNmEFtRi7YfIzHLYJQ+zm7B7ZRoPHVnIoQkdQjbA=</DigestValue>
 </Reference>
 <Reference URI="favourite.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>51BJlCFqKu8r96qlDnvx7Vtmcr+x+9Y9UWx/lyHIZyI=</DigestValue>
+<DigestValue>hISxisyJ7Kvmzg+EOpbQ5H3aIKIRBcK20GXSTrE/xdM=</DigestValue>
 </Reference>
 <Reference URI="icon.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -104,15 +100,15 @@
 </Reference>
 <Reference URI="js%2Fb4_sidebar.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>P3LbCWtpScd0jQh3XhCTXt+Y3LyFv3ewIqWryOm4m0c=</DigestValue>
+<DigestValue>vZR38JTGO2u4AHPEiLL4n3E6TMm46crcAthUP0dCJtQ=</DigestValue>
 </Reference>
 <Reference URI="js%2Fdetail.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>FsoJNXAj65DCa+YDKql53CCIUwyCBGobPN8D/Qjd8P0=</DigestValue>
+<DigestValue>y6jsZXPUJNbKUgxm5i7nv7UiVuG8Q1p5dwBq6/ytDyY=</DigestValue>
 </Reference>
 <Reference URI="js%2Ffavourite.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>vaZIvIxfQ7p+3/a2mMZj21JyW1tz8J1Dhb09TTx1oZM=</DigestValue>
+<DigestValue>v5AVuVfDCQdegiN1JoEzhRCfZZGXqxBL1MmUikwAZ7o=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -120,15 +116,15 @@
 </Reference>
 <Reference URI="js%2Fmap.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>GfVqmszIxE8DjEXpWZJqqnoyHlJSSM8EHxfRT1xdGfY=</DigestValue>
+<DigestValue>Q6VAl92saT64M8ZZmPTAn3C9/Sf2gal6OsXQjnMuzec=</DigestValue>
 </Reference>
-<Reference URI="js%2Fmobiscroll.javascript.min.js">
+<Reference URI="js%2Fmylocations.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>K9sqxYiqhPwvJdnbWVIYjZySoKhEM+hNMx1a++ET2uM=</DigestValue>
+<DigestValue>roWPrHcPHGMJ2T6LDo+eJaT/TLFGCYzXBLwP3GTLYS8=</DigestValue>
 </Reference>
 <Reference URI="js%2Fregistration.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>U9zG7PQqLr9GNLHQ7f1vKlIFY8iPTf2q3m5VCi/Ge1g=</DigestValue>
+<DigestValue>t2rgbgBiutreFVXuxi9uFPOT9ZLLxqAO6bZA6uCNOXw=</DigestValue>
 </Reference>
 <Reference URI="js%2Fstar-rating.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -137,14 +133,6 @@
 <Reference URI="js%2Fstar-rating.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>ghQXmoQDSczcq61fJcO4RQ3uZKoCtDlaMiwfLPhzDBo=</DigestValue>
-</Reference>
-<Reference URI="js%2Ftoast.js">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>0LT76jOV6Sw3kpxXRF6ghBHs3OJIIraK1ByLQJfgs1Q=</DigestValue>
-</Reference>
-<Reference URI="js%2Ftoast.mod.js">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>gQJej969rVbvex0MqMo6J8SCZPUdV9N0s3Gl7TJV5+o=</DigestValue>
 </Reference>
 <Reference URI="libs%2Fbootstrap%2Fcss%2Fbootstrap-reboot.min.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -274,21 +262,21 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>lKAMx6E5KNizrrPa6MBoiGiBZVWVVaiTNaf2SSwpz9M=</DigestValue>
 </Reference>
-<Reference URI="libs%2Fmapbox-gl.js">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>4tR1o6iGLEOEHKrgMc2VA18r3eT3dDvMEp34I9dDY0s=</DigestValue>
-</Reference>
 <Reference URI="login.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>7of8iYNUbKePNVWoWw5P8UfJIDBFsXsIBHczMo5tXbo=</DigestValue>
 </Reference>
 <Reference URI="map.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>vXuAxsNvtuyLR1TLhnz4NbfEj1yFfRiRA/PY6e7hxFo=</DigestValue>
+<DigestValue>K6SuM38/GY+pYu2Mn+eZx49/Oz2d1pY1Ea6T+vjBVOM=</DigestValue>
+</Reference>
+<Reference URI="mylocations.html">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>xoGpG7URcuv3bj3Dmwm5hO+nowPs+tjzXyrXGhY+q7w=</DigestValue>
 </Reference>
 <Reference URI="registration.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>189Oq1CP7dVkAy9ebHPq/UhWm3Ne6ixVEn6qMQucaeI=</DigestValue>
+<DigestValue>n4tV7sCGkROW1xGOgwI+F/T2A7SfijC+9rIGMsRF8mg=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -299,9 +287,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-nmZThNvMDWQLQscc1ZZaD+IgEDEELkqqe8kMn0NPy6IQakBSA/mZv74V29R5XK3lGYlwalzHH98f
-zLcCKWLNvC4w/fH03vGZ0NvPnv4aqiKyj3avIvEHcBwh9ASANsQdipHbd0oAUf0Z/DqtWF//77Ek
-AYoFgkkOZaQhNzfd52o=
+B+4lK0s/oDlPZRy1XgDX1Hv2YLpadUEZErjc5+KRH+YXlBg2LJG6xtgc/kXAeNLo12Tkyz0D8XCT
+OzbsegpUbN3Vy1YeW4oa9qOk+rqyj+FSVhTm99/AyldUvDp78DCrslCxYQgwb7NiWuvPGJ9PcvSS
+mV/1v5lM4GGQs049b6E=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

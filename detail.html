@@ -1,110 +1,112 @@
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-	<!--CSS import-->
-	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.min.css">
+  <title>Swipe actions</title>
+
+  <!-- Mobiscroll JS and CSS Includes -->
+    <!--<link rel="stylesheet" href="css/mobiscroll.javascript.min.css">-->
+    <!--<script src="js/mobiscroll.javascript.min.js"></script>-->
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/b4_sidebar.css" />
-	<link rel="stylesheet" type="text/css" href="css/map.css" />
-	<link rel="stylesheet" type="text/css" href="libs/fontawesome/css/all.css" />
-    <!--<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />-->
-    <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css"/>
-    
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!--suppress JSUnresolvedLibraryURL -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
-	<link href="./css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/b4_sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="css/map.css" />
+    <link rel="stylesheet" type="text/css" href="libs/fontawesome/css/all.css" />
+
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+   
+	
 	<script src="./js/star-rating.js" type="text/javascript"></script>
-		
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	
+	<style>
+	#map {
+		height: 50%;
+		margin: 0;
+		padding: 0;
+	}
+	</style>
+	
 </head>
-
-
-
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark sidebarNavigation" data-sidebarClass="navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Detail</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sidebarNavigation" data-sidebarClass="navbar-dark bg-dark">
+        
         <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a class="navbar-brand" href="#"> Detail</a>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-	        <div class="text-center addjob-container">
-	   		 <div class="circle-img-background-company">
-	   		 	<img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto; border: 5px solid #ff3366;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
-	   		 </div>
-	   		 <br>
-	    		<h3 style="color:#FFF">Foulen ben Foulen </h3>
-	    	</div>
-	    	 <br>
-	    	  
-	    	<ul class="navbar-nav mr-auto">
-                <li class="nav-item active" >
-                    <a class="nav-link" href="map.html" style="font-size:24px">
-                   		 <i class="fas fa-map-marked-alt fa-sm"></i> Home   
-                    </a>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="text-center addjob-container">
+     <div class="circle-img-background-company">
+      <img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto; border: 5px solid #fecc35;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
+    </div>
+    <br>
+    <h3 id="foulen" style="color:#FFF">Foulen ben Foulen </h3>
+  </div>
+  <br>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active" >
+      <a class="nav-link" href="map.html" style="font-size:24px">
+       <i class="fas fa-map-marked-alt fa-sm"></i> Home   
+     </a>
+   </li>
+   <li class="nav-item">
+    <a class="nav-link" href="favourite.html" style="font-size:24px"><i class="fas fa-heart fa-sm"></i> Favourites</a>
+  </li>
+  <li class="nav-item">
+                    <a class="nav-link" href="mylocations.html" style="font-size:24px"><i class="fas fa-book-reader fa-sm"></i></i> My Locations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="favourite.html" style="font-size:24px"><i class="fas fa-heart fa-sm"></i> Favoris</a>
+                    <a class="nav-link" onclick="logout()" href="login.html" style="font-size:24px"><i class="fas fa-sign-out-alt fa-sm"></i></i> Logout</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            
-        </div>
-    </nav>
 
-    <!--  -->
-	
-	<div class="wifi-container">
- 		 <div class="circle-img-background-company text-center">
- 		 	<img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
- 		 </div>
-  		 <br>
-  		 
-  		 <div class='wifi' style="margin-left: auto; margin-right: auto;width: 40%">
-  		 <span class='wifname' style=" color: black;">
-  		 	<i class="fas fa-wifi"></i>  <span id="ssid"></span>
-  		 </span>
-  		 <br>
-   		 <span class='wifpassword' style=" color: black;">
-  		 	<i class="fas fa-unlock-alt"></i>      <span id="pass"></span> 
-  		 </span>
-  		 <br>
-  		 </div>
-  		 
-	
-   	</div>
+</ul>
+
+</div>
+</nav>
+
+<div class="wifi-container">
+ <div class="circle-img-background-company text-center">
+  <img src="./images/logowifi.jpg" style="width: 100px; height: 100px; margin: auto;" alt="Random second slide" class="rounded-circle jugglr-profile-img">
+</div>
+<br>
+
+<div class='wifi' style="margin-left: auto; margin-right: auto;width: 40%">
+ <span class='wifname' style=" color: black;">
+  <i class="fas fa-wifi"></i>  <span id="ssid"></span>
+</span>
+<br>
+<span class='wifpassword' style=" color: black;">
+  <i class="fas fa-unlock-alt"></i>      <span id="pass"></span> 
+</span>
+<br>
+</div>
+</div>
 <input id="rating" name="input-name" type="number" class="rating" min=0 max=5 step=0.5 data-size="sm"> <div  style="text-align:right">
-<img src="./images/fullheart.png" id="favimg" onclick="favourite()"></div>
-		  
-	<div id ="map">
-	
-	</div>
-	 <div style="text-align:center">
-		<button id="direction">Direction</button>
-	</div>
-	
-	<script>
-        
-    </script>
-</body>
+  <img src="./images/fullheart.png" id="favimg" onclick="favourite()"></div>
 
+  <div id ="map">
+
+  </div>
+	<div id="snackbar">Some text some message..</div>
+
+</body>
 <!--Javascript import-->
+<script src="libs/jquery/dist/jquery.js"></script>
 <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/fontawesome/js/all.js"></script>
 <script src="js/b4_sidebar.js"></script>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
 <script src="js/detail.js"></script>
-<script src="js/toast.js"></script>
+<script src="js/star-rating.js" type="text/javascript"></script>
 
-	
-
-
+<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBglTeKV4O47GRsJLAfRoLHcoxmDmc4PuA&signed_in=true&callback=initMap"
+		async defer>
+</script>
 </html>

@@ -105,13 +105,13 @@ input[type="text"] {
 	margin-bottom: 30px;
     text-transform: uppercase;
     font-size: 26px;
-    color:#13caca;
+    color:#333;
     font-weight: 600;
     letter-spacing: 2px;
 }
 a.pass {
     font-size: 15px;
-	    color: #ef4242;
+	    color: #fecc35;
 		font-family: 'Open Sans', sans-serif;
 		    letter-spacing: 2px;
 }
@@ -135,7 +135,7 @@ input[type="button"] {
     padding: 9px 60px;
     font-size: 18px;
     border: none;
-    background-color:#13caca;
+    background-color:#333;
     color: #fff;
     text-transform: uppercase;
     outline: 0;
@@ -145,7 +145,7 @@ input[type="button"] {
 	    letter-spacing: 1px;	
 }
 input[type="button"]:hover {
-    color: #13caca;
+    color: #333;
     background-color: transparent;
 	border: 2px solid #13caca;
 }
@@ -166,7 +166,7 @@ input[type="button"]:hover {
     padding: 3% 0px;
 }
 span.fa.fa-twitter:hover {
-    background-color: #00b6f1;
+    background-color: #333;
     color: white;
 }
 span.fa.fa-facebook:hover {
@@ -196,7 +196,7 @@ span.fa.fa-pinterest-p:hover {
 		font-size: 15px;
 }
 .copyright a {
-    color: #00ffff;
+    color: #333;
 }
 .copyright a:hover {
     color: #fff;
@@ -362,5 +362,9 @@ small{
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+
+/* ******************************************************* */
+
+
 
 /* ******************************************************* */

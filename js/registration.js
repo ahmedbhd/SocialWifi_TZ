@@ -49,3 +49,7 @@ function loadDatatable() {
 			window.location.assign("login.html");
 	});
 }
+
+function cancel(){
+	window.location.href= "login.html";
+}
