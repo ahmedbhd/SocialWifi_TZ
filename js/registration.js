@@ -1,16 +1,18 @@
-
-
 function signup() {
-	
+	document.getElementById('validEmail').style.display = 'none';
+	document.getElementById('validUser').style.display = 'none';
+	document.getElementById('validPassword').style.display = 'none';
+	document.getElementById('validcPassword').style.display = 'none';
+
 	var email = document.getElementById('emailId').value;
 	var password = document.getElementById('passwordId').value;
 	var cpassword = document.getElementById('cpasswordId').value;
 	var userName = document.getElementById('usernameId').value;
 	
 	console.log ('Email : '+email);
-	if (email == '') {
+	if (email == '' || !validateEmail(email)) {
 		document.getElementById('validEmail').style.display = '';
-		document.getElementById('validEmail').innerHTML = "Please fill it ";
+		document.getElementById('validEmail').innerHTML = "Please use a valid email ";
 	}
 	if (userName == '') {
 		document.getElementById('validUser').style.display = '';
@@ -45,6 +47,28 @@ function loadDatatable() {
 
 	console.log('URL : ' + url);
 	$.getJSON(url, function(data) {
+		console.log(data)
+		if (data == 2){
+			document.getElementById('validEmail').style.display = '';
+			document.getElementById('validUser').style.display = '';
+
+			document.getElementById('validEmail').innerHTML = "Invalid email";
+			document.getElementById('validUser').innerHTML = "Invalid username ";
+
+			return ;
+		}
+		if (data == 3){
+			document.getElementById('validEmail').style.display = '';
+
+			document.getElementById('validEmail').innerHTML = "Invalid email";
+			return ;
+		}
+		if (data == 4){
+			document.getElementById('validUser').style.display = '';
+
+			document.getElementById('validUser').innerHTML = "Invalid username";
+			return ;
+		}
 		if (data == 1)
 			window.location.assign("login.html");
 	});
@@ -52,4 +76,9 @@ function loadDatatable() {
 
 function cancel(){
 	window.location.href= "login.html";
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }

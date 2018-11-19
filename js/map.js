@@ -67,6 +67,75 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }*/
 }
+
+/* ==================== Upload Image =========================*/
+var files;
+var downloadlink = null;
+function handleFileSelect(evt) {
+    files = evt.target.files; // FileList object
+	console.log(files);
+	var f = files[0];
+	var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+  }
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  
+  function uploadimage(){
+		console.log(files)
+			var ref = firebase.database().ref();
+			
+			 // Create a root reference
+		    var storageRef = firebase.storage().ref();
+		    
+	 	    var uploadTask = storageRef.child('locations/01.jpg').put(files[0]);
+
+		 // Register three observers:
+		 // 1. 'state_changed' observer, called any time the state changes
+		 // 2. Error observer, called on failure
+		 // 3. Completion observer, called on successful completion
+		 uploadTask.on('state_changed', function(snapshot){
+		   // Observe state change events such as progress, pause, and resume
+		   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+		   var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+		   console.log('Upload is ' + progress + '% done');
+		   switch (snapshot.state) {
+		     case firebase.storage.TaskState.PAUSED: // or 'paused'
+		       console.log('Upload is paused');
+		       break;
+		     case firebase.storage.TaskState.RUNNING: // or 'running'
+		       console.log('Upload is running');
+		       break;
+		   }
+		 }, function(error) {
+			 alert(error);
+		   // Handle unsuccessful uploads
+		 }, function() {
+		   // Handle successful uploads on complete
+		   // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+			 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+				 console.log('File available at', downloadURL);
+				 downloadURL= downloadURL.replace('&', '%26');
+				 console.log('File available at &', downloadURL);
+				 downloadURL= downloadURL.replace('%', '%25');
+				 console.log('File available at %', downloadURL);
+				 downloadlink = downloadURL;
+				    console.log('File available at last', downloadlink);
+				    ajouterloc();
+				  });
+
+		 });
+		}
+  
+  
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
@@ -151,12 +220,20 @@ function addInfoWindow(marker, message) {
 }
 loadDatatable();
 
+function addlocation (){
+	if (files!=null) 
+		uploadimage();
+	else {
+		ajouterloc();
+	}
+}
+
 function ajouterloc() {
 	
 	var lat = null;
 	var lng = null;
-	var ssid = document.getElementById('ssid').value;
-	var pw= document.getElementById('pw').value;
+	var ssid = document.getElementById('wifinameId').value;
+	var pw= document.getElementById('wifipassword').value;
 	
 	if (ssid.length === 0 || ssid.trim()==='') {
 		showToast("SSID can't be empty!");
@@ -167,25 +244,27 @@ function ajouterloc() {
 		showToast("Invalid Password!");
 		return ;
 	}
-		navigator.geolocation.getCurrentPosition(function(position) {
+		/*navigator.geolocation.getCurrentPosition(function(position) {
 			
 			// sets default position to your position
 			lat = position.coords.latitude;
-			lng = position.coords.longitude;
+			lng = position.coords.longitude;*/
 			
+			lat = 35;
+			lng = 10
 			
 		    console . log ( 'Latitude: ' + position . coords . latitude   + 'Longitude: ' + position . coords . longitude );   
 
 			var url;
 
-			url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=addloc&desc='+ssid+'&pw='+pw+'&lat='+lat+'&lng='+lng+'&img=null'+'&userid='+sessionStorage.getItem("iduser");
+			url = 'http://social-wifi.000webhostapp.com/tizen/services.php?action=addloc&desc='+ssid+'&pw='+pw+'&lat='+lat+'&lng='+lng+'&img='+downloadlink+'&userid='+sessionStorage.getItem("iduser");
 
 			console.log('URL : ' + url);
 			$.get(url, function(data) {
 				modal.style.display = "none";
 				window.location.assign("map.html");
 			});
-			},
+		/*	},
 			function(error) {
 				console.log("Error: ", error);
 				M.toast({html: 'Add Failed!'})
@@ -193,7 +272,7 @@ function ajouterloc() {
 			);
 			//iqwerty.toast.Toast('WIFI added!');
 		
-	
+	*/
 	
 }
 

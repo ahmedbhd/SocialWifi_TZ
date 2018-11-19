@@ -84,14 +84,7 @@ label, input[type="text"],input[type="button"]{
     display: block;
 	    font-family: 'Open Sans', sans-serif;
 }
-input[type="text"] {
-    outline: 0;
-    padding: 12px 15px;
-    border: 1px solid #000;
-    width: 100%;
-    letter-spacing: 1px;
-    box-sizing: border-box;
-}
+
 .agile-login h1 {
     text-align: center;
     color: #fff;
@@ -366,5 +359,3 @@ small{
 /* ******************************************************* */
 
 
-
-/* ******************************************************* */

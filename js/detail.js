@@ -29,7 +29,11 @@ function loadDatatable() {
 			
 			document.getElementById("ssid").innerText = jsonData[k]['desc_loc'];
 			document.getElementById("pass").innerText = jsonData[k]['wifi_pass'];
-
+			console.log(jsonData[k]['img'])
+			if (jsonData[k]['img']!=null){
+				$("#imgwifi").attr("src",jsonData[k]['img']);
+			}
+			
 			var el = document.createElement('div');
 			el.className = 'marker';
 			  // make a marker for each feature and add to the map

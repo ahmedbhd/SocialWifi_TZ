@@ -8,15 +8,15 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>E3v+EL4JKJvx4rrYJPmADI2/dC/DqCSY9jCdjxkJmVI=</DigestValue>
+<DigestValue>d4yxrf4B3IDAJMjziFDyN/lmhj/dXRWmnQ7knebeYM4=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>JUlDghTKZe1VafD8tlu2pS2ziowyubSlQFK6VywoVo8=</DigestValue>
+<DigestValue>h0vecKtTevxPutwDYYYfdqiBOhtjCaXJnjDJpt2y4gs=</DigestValue>
 </Reference>
 <Reference URI="css%2Fb4_sidebar.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>uwZqfEAr0BL8h09AUc8+/mhTkvd4CyBDaH2nZ5xgDNU=</DigestValue>
+<DigestValue>kxqrxqUBItZBXevdyMbHwQTMDBSo4bzE+Z2HXZq4U9o=</DigestValue>
 </Reference>
 <Reference URI="css%2Ficons_mobiscroll.ttf">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -40,11 +40,11 @@
 </Reference>
 <Reference URI="css%2Fstyle.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>ueqEKGKRGvC11TS6taA39tpjzPn9wDoV6TdBxv1LW7g=</DigestValue>
+<DigestValue>Te5RuWrsf2NHcvEjJFy7YeTJpmjrapPESjqsVQXqoc0=</DigestValue>
 </Reference>
 <Reference URI="detail.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>8rDrNmEFtRi7YfIzHLYJQ+zm7B7ZRoPHVnIoQkdQjbA=</DigestValue>
+<DigestValue>nCw9CwXC9+KyPY/en0o72Z91ynl6eQAdcoi4lP2qTME=</DigestValue>
 </Reference>
 <Reference URI="favourite.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -104,11 +104,11 @@
 </Reference>
 <Reference URI="js%2Fdetail.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>y6jsZXPUJNbKUgxm5i7nv7UiVuG8Q1p5dwBq6/ytDyY=</DigestValue>
+<DigestValue>D3pWseDAlBYllHjfQDrnWJaURxhV5BhkwHIDOj+k3KI=</DigestValue>
 </Reference>
 <Reference URI="js%2Ffavourite.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>v5AVuVfDCQdegiN1JoEzhRCfZZGXqxBL1MmUikwAZ7o=</DigestValue>
+<DigestValue>D0O84mkC5S7jIqMb3Y82e6iJfi5B1VD5CamGEGZOIxY=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -116,15 +116,15 @@
 </Reference>
 <Reference URI="js%2Fmap.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Q6VAl92saT64M8ZZmPTAn3C9/Sf2gal6OsXQjnMuzec=</DigestValue>
+<DigestValue>DScd8cxdGsiulv3ZJPJjo6XMCqrCoJ5ED5ZS91zuKs4=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmylocations.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>roWPrHcPHGMJ2T6LDo+eJaT/TLFGCYzXBLwP3GTLYS8=</DigestValue>
+<DigestValue>sxEmEUHLkb2IYfbeMLA9FruvneovTNZ1DBUyuqrsGgU=</DigestValue>
 </Reference>
 <Reference URI="js%2Fregistration.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>t2rgbgBiutreFVXuxi9uFPOT9ZLLxqAO6bZA6uCNOXw=</DigestValue>
+<DigestValue>SvZsodFRcq7J8TLiyYq25mS/VD2znBKHtlCpNGfttb4=</DigestValue>
 </Reference>
 <Reference URI="js%2Fstar-rating.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -268,7 +268,7 @@
 </Reference>
 <Reference URI="map.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>K6SuM38/GY+pYu2Mn+eZx49/Oz2d1pY1Ea6T+vjBVOM=</DigestValue>
+<DigestValue>WSOR0sXoPW8mW/cbPFiSLToRndhse1Drtk3l0IdLJio=</DigestValue>
 </Reference>
 <Reference URI="mylocations.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -287,9 +287,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-B+4lK0s/oDlPZRy1XgDX1Hv2YLpadUEZErjc5+KRH+YXlBg2LJG6xtgc/kXAeNLo12Tkyz0D8XCT
-OzbsegpUbN3Vy1YeW4oa9qOk+rqyj+FSVhTm99/AyldUvDp78DCrslCxYQgwb7NiWuvPGJ9PcvSS
-mV/1v5lM4GGQs049b6E=
+d1fLnOECaDIj1KvRqqvRosCKyRwDmBgMhGWYlOnBVoZekyt/yE9DycQTecqieZWWZ0YM3EvNlLXs
+z7TSDOAdPIHkMOKoMsy58QKru/TlNk2INQJbVh/Cp7g1QqHDNiKq06gitMugNVff9QhmdIIeSaxL
+V+ZDRQTk2vBRazxtbJU=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

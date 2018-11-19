@@ -78,6 +78,21 @@
 		padding: 0;
 	}
 	</style>
+	
+	<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCbpPjvfKm0eMK_86rHrebg6QObYIuAPN0",
+    authDomain: "socialwifitz.firebaseapp.com",
+    databaseURL: "https://socialwifitz.firebaseio.com",
+    projectId: "socialwifitz",
+    storageBucket: "socialwifitz.appspot.com",
+    messagingSenderId: "126050885628"
+  };
+  firebase.initializeApp(config);
+
+</script>
 </head>
 
 
@@ -138,17 +153,41 @@
 	</div>
 	<div id="snackbar">Some text some message..</div>
 	<!-- The Modal -->
+
 	<div id="myModal" class="modal">
 		
 		<!-- Modal content -->
-		<div class="modal-content" style="text-align:center">
-			<span class="close">&times;</span>
-			<form action="/action_page.php">
-			<br><br>
-				<input type="text" name="ssid" id ="ssid" placeholder=" SSID" style="text-align:center"><br><br>
-				<input type="text" name="pw" id ="pw"placeholder="PASSWORD" style="text-align:center"><br><br>
-				<input type="button" value="Save" id ="add" onclick="ajouterloc()"  />
-			</form> 
+		<div class="modal-content" style="background:#333;width: 80%;">
+			<h5 style="color: white;" class="text-center">New Wifi Location</h5>
+				<span class="close" style='visibility: hidden;'>&times;</span>
+				<form action="/" method="post">
+				
+					<div class="form-group">
+						<label for="exampleInputEmail1" style="color: white;">Wifi Name</label> 
+						<input type="text" class="form-control" id="wifinameId"
+							aria-describedby="usernameHelp" placeholder="Enter Wifi Name"> 
+						<small style="display:none; color: red;" id="validUser" class="form-text text-muted"></small>	
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputEmail1" style="color: white;">Password</label> 
+						<input type="text" class="form-control" id="wifipassword"
+							aria-describedby="usernameHelp" placeholder="Enter Wifi Password"> 
+						<small style="display:none; color: red;" id="validUser" class="form-text text-muted"></small>	
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1" style="color: white;">Choose Image</label> 
+						<input type="file" id="files" name="files[]" accept="image/x-png,image/gif,image/jpeg" />
+						
+						<small style="display:none; color: red;" id="validcPassword" class="form-text text-muted"></small>
+					</div>
+					
+					<input type="button" value="Sign In" onclick="addlocation()" />
+					
+				</form>
+
+		</div>
+			
 		</div>
 		
 	</div>
