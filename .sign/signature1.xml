@@ -8,7 +8,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>d4yxrf4B3IDAJMjziFDyN/lmhj/dXRWmnQ7knebeYM4=</DigestValue>
+<DigestValue>RdahYqYseXfBgLmPDq+BqN4xdlmKpkuMTCcOeF3UHdE=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -116,7 +116,7 @@
 </Reference>
 <Reference URI="js%2Fmap.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>DScd8cxdGsiulv3ZJPJjo6XMCqrCoJ5ED5ZS91zuKs4=</DigestValue>
+<DigestValue>DUrzI114jLExRnVkRjUHDB0braL+oxR/S07VRq/9das=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmylocations.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -268,7 +268,7 @@
 </Reference>
 <Reference URI="map.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>WSOR0sXoPW8mW/cbPFiSLToRndhse1Drtk3l0IdLJio=</DigestValue>
+<DigestValue>BcMohwAnWNHJwZa5NYe9z+lRj+A2e2MJti7dHuVM+jk=</DigestValue>
 </Reference>
 <Reference URI="mylocations.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -287,9 +287,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-d1fLnOECaDIj1KvRqqvRosCKyRwDmBgMhGWYlOnBVoZekyt/yE9DycQTecqieZWWZ0YM3EvNlLXs
-z7TSDOAdPIHkMOKoMsy58QKru/TlNk2INQJbVh/Cp7g1QqHDNiKq06gitMugNVff9QhmdIIeSaxL
-V+ZDRQTk2vBRazxtbJU=
+SXLnoexLmPHZAupr2w2XUXmAJm5DM993+gfmP8UmlJ2J4k93a1+aKf4jh4I8kXRZbbxji/IUfRGO
+3wp7qryWD8JjVcQj6+SUm8t5aLx4mV/QGLpnWU/SOIssuTeSis04BOZv5DBQqnRb8Ex4FxGAbXtI
+Ich9FvjYRYio/4nLn4E=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

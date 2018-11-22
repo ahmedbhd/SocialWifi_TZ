@@ -253,7 +253,7 @@ function ajouterloc() {
 			lat = 35;
 			lng = 10
 			
-		    console . log ( 'Latitude: ' + position . coords . latitude   + 'Longitude: ' + position . coords . longitude );   
+		    //console . log ( 'Latitude: ' + position . coords . latitude   + 'Longitude: ' + position . coords . longitude );   
 
 			var url;
 
